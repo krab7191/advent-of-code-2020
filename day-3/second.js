@@ -31,11 +31,16 @@ const detectTrees = (input, slope) => {
   });
   return trees;
 };
+const slopes = [
+  { x: 1, y: 1 },
+  { x: 3, y: 1 },
+  { x: 5, y: 1 },
+  { x: 7, y: 1 },
+  { x: 1, y: 2 }
+];
 const dataInput = formatInput('/home/karsten/programming/advent-of-code-2020/day-3/raw.txt', 77);
-const oneOneTrees = detectTrees(dataInput, { x: 1, y: 1 });
-const threeOneTrees = detectTrees(dataInput, { x: 3, y: 1 });
-const fiveOneTrees = detectTrees(dataInput, { x: 5, y: 1 });
-const sevenOneTrees = detectTrees(dataInput, { x: 7, y: 1 });
-const oneTwoTrees = detectTrees(dataInput, { x: 1, y: 2 });
-const answer = oneOneTrees * threeOneTrees * fiveOneTrees * sevenOneTrees * oneTwoTrees;
+let answer = 1;
+slopes.forEach((slope, i) => {
+  answer = answer * detectTrees(dataInput, slope);
+});
 console.log(answer);
